@@ -37,6 +37,9 @@ export function CreateAccountForm() {
         }
     });
 
+    const [view, setView] = useState('password')
+    const [hide, setHide] = useState('Show')
+
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         //console.log(values);       
 
@@ -66,10 +69,8 @@ export function CreateAccountForm() {
         }
     }
 
-       const [view, setView] = useState('password')
-        const [hide, setHide] = useState('Show')
-        const handleViewPassword = () =>{ 
-    
+    const showPassword = () => {
+        
             if(view ==="password") {
                 setView("text")
                 setHide("Hide")
@@ -78,11 +79,11 @@ export function CreateAccountForm() {
                 setHide("Show")
             }
         }
-
+     
     return (
         <div className="flex flex-col justify-center items-center space-y-2">
 
-            <span className="text-lg">You will love it.</span>
+            <span className="text-lg">Create your account</span>
             <Form {...form}>
 
                 <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col space-y-2">
@@ -112,7 +113,7 @@ export function CreateAccountForm() {
                                     <Input placeholder="password" type={view}
                                         {...field} />
                                 </FormControl>
-                                <button onClick={handleViewPassword} className="text-gray-500  w-full text-sm text-end">{hide} password</button>                             
+                                <button onClick={showPassword} className="text-gray-500  w-full text-sm text-end">{hide} password</button>                             
                                 <FormMessage />
                             </FormItem>
                         )}

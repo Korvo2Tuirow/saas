@@ -21,12 +21,6 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-
-
-
-
-
 export function UserNav() {
 
   const [user, setUser] = useState<User | null>()
@@ -35,7 +29,7 @@ export function UserNav() {
 
   const getUser = async () => {
 
-    const { data, error } = await supabase.auth.getUser()
+    const {data:{user}, error } = await supabase.auth.getUser()
 
     if (error) {
       console.log("UserNav: ", error);
@@ -57,7 +51,7 @@ export function UserNav() {
 
   return (
     <>
-      {!user && <Link href={"/"}>Login</Link>}
+     
       {user && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -71,9 +65,9 @@ export function UserNav() {
           <DropdownMenuContent className="w-56" align="end" forceMount>
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none">shadcn</p>
+                <p className="text-sm font-medium leading-none">{user.email?.split("@")[0]}</p>
                 <p className="text-xs leading-none text-muted-foreground">
-                  m@example.com
+                  {user.email}
                 </p>
               </div>
             </DropdownMenuLabel>
@@ -83,18 +77,12 @@ export function UserNav() {
                 Profile
                 <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                Billing
-                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                Settings
-                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem>New Team</DropdownMenuItem>
+            
+              
+              
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleSignout}>
               Log out
               <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
             </DropdownMenuItem>

@@ -37,6 +37,10 @@ export function LoginAccountForm() {
         }
     });
 
+    
+    const [view, setView] = useState('password')
+    const [hide, setHide] = useState('Show')
+
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         //console.log(values);
 
@@ -55,8 +59,6 @@ export function LoginAccountForm() {
         }
     }
 
-    const [view, setView] = useState('password')
-    const [hide, setHide] = useState('Show')
     const handleViewPassword = () => {
 
         if (view === "password") {
