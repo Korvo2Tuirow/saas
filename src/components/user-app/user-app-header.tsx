@@ -5,11 +5,11 @@ import { UserNav } from "../common/user_nav";
 export default function UserAppHeader(){
     return(
         <header>
-            <nav>
-                <span
-                >re<span>Store</span>
+            <nav className="flex justify-between items-center m-4 ">
+            <UserNav/>
+                <span className="text-2xl font-bold">re<span>Store</span>
                 </span>
-                <UserNav/>
+              
             </nav>
 
         </header>

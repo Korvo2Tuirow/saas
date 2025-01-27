@@ -21,6 +21,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 export function UserNav() {
 
   const [user, setUser] = useState<User | null>()
@@ -56,9 +57,9 @@ export function UserNav() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-              <Avatar className="h-9 w-9">
-                <AvatarImage src="/avatars/03.png" alt="@shadcn" />
-                <AvatarFallback>SC</AvatarFallback>
+              <Avatar className="h-12 w-12">
+                <AvatarImage src="/avatars/avatar1.png" alt="reStore"/>
+                <AvatarFallback>RS</AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
